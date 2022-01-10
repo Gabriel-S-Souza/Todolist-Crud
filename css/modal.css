@@ -34,6 +34,8 @@
     width: 24px;
     border-radius: 50%;
     background-color: rgb(236, 71, 29);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 1);
+    cursor: pointer;
 }
 
 #wrapper #inputTask {
