@@ -9,13 +9,14 @@
 <body>
     <section id="conteiner">
         <ul id="to-do-list"></ul>
-        <button id="btn">Adicionar</button>
+        <button id="btn-open">Adicionar</button>
     </section>
     <section class="modal">
         <div id="wrapper">
-            <label for="add-task">Insira a tarefa</label>
-            <input name="add-task" type="text">
-            <button id="btn">Adicionar</button>
+            <button id="btn-close-modal">X</button>
+            <label for="inputTask">Insira a tarefa</label>
+            <input id="inputTask" type="text" required>
+            <button id="btn-insert">Adicionar</button>
         </div>
     </section>
     <script src="/js/script.js"></script>

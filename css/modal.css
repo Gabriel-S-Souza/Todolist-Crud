@@ -16,10 +16,27 @@
 
 #wrapper {
     display: flex;
+    position: relative;
     background-color: #CDE;
-    height: 16rem;
-    width: 16rem;
+    height: 22rem;
+    width: 22rem;
     margin: auto;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
+
+#btn-close-modal {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+#wrapper #inputTask {
+    width: 16rem;
+    margin-bottom: 48px;
+}
+
