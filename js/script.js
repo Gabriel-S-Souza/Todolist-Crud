@@ -16,3 +16,22 @@ function getList(data) {
         lista.appendChild(li)
     });
 }
+
+const buttonOpen = document.querySelector('#btn-open')
+buttonOpen.addEventListener('click', function(){
+    document.querySelector('.modal').classList.add('ativo')
+})
+
+const buttonClose = document.querySelector('#btn-close-modal')
+buttonClose.addEventListener('click', function(){
+    document.querySelector('.modal').classList.remove('ativo')
+})
+
+const buttonInsert = document.querySelector('#btn-insert')
+buttonInsert.addEventListener('click', function(){
+    let input = document.querySelector("#inputTask")
+    let title = input.value
+    if(title.length > 0){
+        
+    }
+})
