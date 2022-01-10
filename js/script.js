@@ -1,6 +1,6 @@
 
 async function request(){
-    answer = await fetch("http://localhost:7777/v1/todolist")
+    let answer = await fetch("http://localhost:7777/v1/todolist")
     let answerJson = await answer.json()
     getList(answerJson)
 }
@@ -32,6 +32,21 @@ buttonInsert.addEventListener('click', function(){
     let input = document.querySelector("#inputTask")
     let title = input.value
     if(title.length > 0){
-        
+        postTask(input.value)
     }
 })
+
+async function postTask(task){
+    let answer = await fetch("http://localhost:7777/v1/todolist", {
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({
+          "title": `${task}`,
+          "status": "A fazer"
+        })
+      })
+      let answerJson = await answer.json()
+      console.log(answerJson)
+}
