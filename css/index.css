@@ -4,6 +4,11 @@ body {
     flex-direction: column;
 }
 
+#to-do-list {
+    overflow: auto;
+    width: 100%;
+}
+
 #conteiner {
     display: flex;
     position: relative;

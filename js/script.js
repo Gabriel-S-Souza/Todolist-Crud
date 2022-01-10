@@ -1,14 +1,15 @@
 
-async function request(){
+async function getTasks(){
     let answer = await fetch("http://localhost:7777/v1/todolist")
     let answerJson = await answer.json()
-    getList(answerJson)
+    createList(answerJson)
 }
 
-request()
+getTasks()
 
-function getList(data) {
+function createList(data) {
     const lista = document.querySelector('#to-do-list')
+    lista.innerHTML = ""
     data.forEach(task => {
         const li = document.createElement('li')
         li.classList.add('task')
@@ -32,11 +33,11 @@ buttonInsert.addEventListener('click', function(){
     let input = document.querySelector("#inputTask")
     let title = input.value
     if(title.length > 0){
-        postTask(input.value)
+        createTask(input.value)
     }
 })
 
-async function postTask(task){
+async function createTask(task){
     let answer = await fetch("http://localhost:7777/v1/todolist", {
         "method": "POST",
         "headers": {
@@ -47,6 +48,18 @@ async function postTask(task){
           "status": "A fazer"
         })
       })
-      let answerJson = await answer.json()
-      console.log(answerJson)
+    let answerJson = await answer.json()
+    console.log(answerJson)
+    refresh()
 }
+
+function refresh() {
+    document.querySelector('.modal').classList.remove('ativo')
+    getTasks()
+}
+
+// let tasks = document.querySelectorAll(".task")
+
+// tasks.forEach(function(task){
+//     task.
+// })
