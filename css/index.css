@@ -1,0 +1,11 @@
+body {
+    height: 100vh;
+    display: flex;
+}
+
+#conteiner {
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    background-color: #EEE;
+}
