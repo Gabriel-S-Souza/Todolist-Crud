@@ -16,4 +16,3 @@ function getList(data) {
         lista.appendChild(li)
     });
 }
-
