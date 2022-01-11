@@ -14,13 +14,13 @@ function createList(data) {
         lista.appendChild(li)
         li.outerHTML = `
         <li class="task">
-            <p class="textTask">${task.title + " - " + task.status}</p>
+            <p class="textTask" id=${task.id}>${task.title + " - " + task.status}</p>
             <div class="btn-group dropstart">
                 <button type="button" class="actions" data-bs-toggle="dropdown" aria-expanded="false">⋮</button>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item">
                     Editar
-                    <span class="material-icons">
+                    <span class="material-icons" onclick="editTask('${task.title}', '${task.id}')">
                         edit
                     </span>
                     </li>
@@ -110,3 +110,12 @@ async function changeTaskStatus(status, id){
       refresh()
 }
 
+function editTask(title, id){
+    let tarefaEdit = document.getElementById(`${id}`)
+    let text = tarefaEdit.textContent
+    tarefaEdit.textContent = ""
+    tarefaEdit.outerHTML = `<input type="text" class="textTask inputEdit"
+    onfocus="this.selectionStart = this.selectionEnd = this.value.length"
+    value="${title}" autofocus>`
+
+}
