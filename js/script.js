@@ -118,17 +118,15 @@ function editTask(title, id){
     value="${title}" autofocus>`
     let taskEdited = document.querySelector('input.textTask')
     taskEdited.addEventListener("blur", async function(){
-        console.log("Evento ocorreu")
         let answer = await fetch("http://localhost:7777/v1/todolist", {
-        "method": "PUT",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
-            "title": `${title}`,
-            "id": `${taskEdited.value}`,
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "title": `${taskEdited.value}`,
+                "id": `${id}`,
+            })
         })
-        })
-        answer.json().then((resposta)=>console.log(resposta))
     })
 }
