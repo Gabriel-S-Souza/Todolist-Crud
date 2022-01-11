@@ -1,4 +1,4 @@
-async function getTasks(){
+async function getTasks() {
     let answer = await fetch("http://localhost:7777/v1/todolist")
     let answerJson = await answer.json()
     createList(answerJson)
@@ -19,7 +19,7 @@ function createList(data) {
                 <button type="button" class="actions" data-bs-toggle="dropdown" aria-expanded="false">⋮</button>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item">
-                    Editar
+                        Editar
                     <span class="material-icons" onclick="editTask('${task.title}', '${task.id}')">
                         edit
                     </span>
@@ -60,7 +60,7 @@ buttonInsert.addEventListener('click', function(){
     }
 })
 
-async function createTask(task){
+async function createTask(task) {
     let answer = await fetch("http://localhost:7777/v1/todolist", {
         "method": "POST",
         "headers": {
@@ -70,7 +70,7 @@ async function createTask(task){
           "title": `${task}`,
           "status": "A fazer"
         })
-      })
+    })
     let answerJson = await answer.json()
     refresh()
 }
@@ -91,12 +91,12 @@ async function deleteTask(id){
         "body": JSON.stringify({
           "id": `${id}`,
         })
-      })
-      refresh()
+    })
+    refresh()
     } 
 }
 
-async function changeTaskStatus(status, id){
+async function changeTaskStatus(status, id) {
     let answer = await fetch("http://localhost:7777/v1/todolist", {
         "method": "PUT",
         "headers": {
@@ -106,11 +106,11 @@ async function changeTaskStatus(status, id){
         "status": `${status == "Concluído" ? "Inconcluido" : "Concluído"}`,
           "id": `${id}`,
         })
-      })
-      refresh()
+    })
+    refresh()
 }
 
-function editTask(title, id){
+function editTask(title, id) {
     let taskEdit = document.getElementById(`${id}`)
     taskEdit.textContent = ""
     taskEdit.outerHTML = `<input type="text" class="textTask inputEdit"

@@ -10,7 +10,7 @@ body {
     width: 100%;
 }
 
-#container {
+.container {
     display: flex;
     position: relative;
     flex-direction: column;
