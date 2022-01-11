@@ -1,4 +1,3 @@
-
 async function getTasks(){
     let answer = await fetch("http://localhost:7777/v1/todolist")
     let answerJson = await answer.json()
@@ -12,9 +11,33 @@ function createList(data) {
     lista.innerHTML = ""
     data.forEach(task => {
         const li = document.createElement('li')
-        li.classList.add('task')
-        li.textContent = task.title
         lista.appendChild(li)
+        li.outerHTML = `
+        <li class="task">
+            <p class="textTask">${task.title + " - " + task.status}</p>
+            <div class="btn-group dropstart">
+                <button type="button" class="actions" data-bs-toggle="dropdown" aria-expanded="false">⋮</button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                    Editar
+                    <span class="material-icons">
+                        edit
+                    </span>
+                    </li>
+                    <li class="dropdown-item" onclick="deleteTask('${task.id}')" >Deletar
+                        <span class="material-icons">
+                            delete
+                        </span>
+                    </li>
+                    <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
+                        Concluir
+                        <span class="material-icons">
+                            done
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </li>`
     });
 }
 
@@ -49,7 +72,6 @@ async function createTask(task){
         })
       })
     let answerJson = await answer.json()
-    console.log(answerJson)
     refresh()
 }
 
@@ -58,8 +80,33 @@ function refresh() {
     getTasks()
 }
 
-// let tasks = document.querySelectorAll(".task")
+async function deleteTask(id){
+    let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
+    if(confirmDelete){
+        let answer = await fetch("http://localhost:7777/v1/todolist", {
+        "method": "DELETE",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({
+          "id": `${id}`,
+        })
+      })
+      refresh()
+    } 
+}
 
-// tasks.forEach(function(task){
-//     task.
-// })
+async function changeTaskStatus(status, id){
+    let answer = await fetch("http://localhost:7777/v1/todolist", {
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({
+        "status": `${status == "Concluído" ? "Inconcluido" : "Concluído"}`,
+          "id": `${id}`,
+        })
+      })
+      refresh()
+}
+
