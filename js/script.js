@@ -117,7 +117,9 @@ function editTask(title, id){
     onfocus="this.selectionStart = this.selectionEnd = this.value.length"
     value="${title}" autofocus>`
     let taskEdited = document.querySelector('input.textTask')
-    taskEdited.addEventListener("blur", async function(){
+    taskEdited.addEventListener("blur", editTaskReq)
+    window.addEventListener("keydown", (event) => event.keyCode == 13 ? editTaskReq(): undefined )
+    async function editTaskReq(){
         let answer = await fetch("http://localhost:7777/v1/todolist", {
             "method": "PUT",
             "headers": {
@@ -128,5 +130,5 @@ function editTask(title, id){
                 "id": `${id}`,
             })
         })
-    })
+    } 
 }
