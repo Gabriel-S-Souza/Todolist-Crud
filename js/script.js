@@ -111,11 +111,24 @@ async function changeTaskStatus(status, id){
 }
 
 function editTask(title, id){
-    let tarefaEdit = document.getElementById(`${id}`)
-    let text = tarefaEdit.textContent
-    tarefaEdit.textContent = ""
-    tarefaEdit.outerHTML = `<input type="text" class="textTask inputEdit"
+    let taskEdit = document.getElementById(`${id}`)
+    taskEdit.textContent = ""
+    taskEdit.outerHTML = `<input type="text" class="textTask inputEdit"
     onfocus="this.selectionStart = this.selectionEnd = this.value.length"
     value="${title}" autofocus>`
-
+    let taskEdited = document.querySelector('input.textTask')
+    taskEdited.addEventListener("blur", async function(){
+        console.log("Evento ocorreu")
+        let answer = await fetch("http://localhost:7777/v1/todolist", {
+        "method": "PUT",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({
+            "title": `${title}`,
+            "id": `${taskEdited.value}`,
+        })
+        })
+        answer.json().then((resposta)=>console.log(resposta))
+    })
 }
