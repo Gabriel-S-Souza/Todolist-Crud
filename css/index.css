@@ -47,3 +47,13 @@ body {
     bottom: 1em;
 }
 
+.inputEdit {
+    background-color: #00000000;
+    border: none;
+    outline: none;
+    height: 24px;
+    margin-bottom: 16px;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.5); 
+    font-weight: 700;
+}
