@@ -9,19 +9,24 @@
     <title>Todolist</title>
 </head>
 <body>
-    <section class="container">
+    <section id="container">
+        <header id="header">
+            <h1 id="title">To-do-List</h1>
+        </header>
         <ul id="to-do-list"></ul>
-        <button id="btn-open">Adicionar</button>
+        <footer id="footer">
+            <button id="btn-open">+</button>
+        </footer>
     </section>
     <section class="modal">
         <div id="wrapper">
             <button id="btn-close-modal">X</button>
-            <label for="inputTask">Insira a tarefa</label>
-            <input id="inputTask" type="text">
+            <label for="inputTask"></label>
+            <input id="inputTask" type="text" placeholder="Digite aqui sua nova tarefa">
             <button id="btn-insert">Adicionar</button>
         </div>
     </section>
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body> 
+</body>
 </html>

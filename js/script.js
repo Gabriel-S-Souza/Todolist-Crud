@@ -18,21 +18,21 @@ function createList(data) {
             <div class="btn-group dropstart">
                 <button type="button" class="actions" data-bs-toggle="dropdown" aria-expanded="false">⋮</button>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-item">
+                    <li class="dropdown-item" onclick="editTask('${task.title}', '${task.id}')">
                         Editar
-                    <span class="material-icons" onclick="editTask('${task.title}', '${task.id}')">
-                        edit
-                    </span>
+                        <span class="material-icons">
+                            edit
+                        </span>
+                    <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
+                        Concluir
+                        <span class="material-icons" style="font-weight: bold;">
+                            check
+                        </span>
+                    </li>
                     </li>
                     <li class="dropdown-item" onclick="deleteTask('${task.id}')" >Deletar
                         <span class="material-icons">
                             delete
-                        </span>
-                    </li>
-                    <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
-                        Concluir
-                        <span class="material-icons">
-                            done
                         </span>
                     </li>
                 </ul>

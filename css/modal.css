@@ -8,6 +8,8 @@
     left: 0;
     justify-content: center;
     align-items: center;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
 }
 
 .modal.ativo {
@@ -17,13 +19,19 @@
 #wrapper {
     display: flex;
     position: relative;
-    background-color: #CDE;
+    background-color: #FFF;
     height: 22rem;
-    width: 22rem;
-    margin: auto;
+    width: 34%;
+    height: 195px;
+    min-width: 454px;
+    max-width: 674px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 0.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 13px 6px rgba(0, 0, 0, 16%);
 }
 
 #btn-close-modal {
@@ -39,7 +47,21 @@
 }
 
 #wrapper #inputTask {
-    width: 16rem;
-    margin-bottom: 48px;
+    width: 90%;
+    height: 48px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#btn-insert {
+    width: 144px;
+    height: 58px;
+    border-radius: 8px;
+    background-color: #1A12B8;
+    font-size: 24px;
+    color: #FFF;
+    font-weight: 500;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 25%);
 }
 
