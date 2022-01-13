@@ -66,6 +66,7 @@ buttonInsert.addEventListener('click', function(){
     let title = input.value
     if(title.length > 0){
         createTask(input.value)
+        input.value = ""
     }
 })
 
@@ -90,11 +91,12 @@ function refresh() {
     getTasks()
 }
 
-async function deleteTask(id){
+function deleteTask(id){
     let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
     if(confirmDelete){
         displayMessage("excluída")
-        setTimeout(function(){
+        document.getElementById(`${id}`).parentElement.classList.add('deleted')
+        setTimeout(async function(){
             let answer = await fetch("http://localhost:7777/v1/todolist", {
             "method": "DELETE",
             "headers": {
@@ -105,7 +107,7 @@ async function deleteTask(id){
                 })
             })
             refresh()
-        }, 500)
+        }, 1000)
     }
 }
 
