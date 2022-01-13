@@ -19,7 +19,7 @@ function createList(data) {
         lista.appendChild(li)
         li.outerHTML = 
         `<li class="task">
-            <p class="textTask" id=${task.id}>${task.title + " - " + task.status}</p>
+            <p class="textTask ${task.status == "Concluído" ? "concluded" : ""}" id=${task.id}>${task.title + (task.status == "Concluído" ? " - Concluído" : "")}</p>
             <div class="btn-group dropstart">
                 <button type="button" class="buttonActions" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="material-icons">
@@ -33,9 +33,9 @@ function createList(data) {
                             edit
                         </span>
                     <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
-                        Concluir
+                    ${task.status == "Concluído" ? "Inconcluído" : "Concluído"}
                         <span class="material-icons" style="font-weight: bold;">
-                            check
+                        ${task.status == "Concluído" ? "close" : "check"}
                         </span>
                     </li>
                     </li>
@@ -77,7 +77,7 @@ async function createTask(task) {
         },
         "body": JSON.stringify({
             "title": `${task}`,
-            "status": "A fazer"
+            "status": "Inconcluído"
         })
     })
     let answerJson = await answer.json()
@@ -94,17 +94,19 @@ async function deleteTask(id){
     let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
     if(confirmDelete){
         displayMessage("excluída")
-        let answer = await fetch("http://localhost:7777/v1/todolist", {
-        "method": "DELETE",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
-            "id": `${id}`,
-        })
-    })
-    refresh()
-    } 
+        setTimeout(function(){
+            let answer = await fetch("http://localhost:7777/v1/todolist", {
+            "method": "DELETE",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "id": `${id}`,
+                })
+            })
+            refresh()
+        }, 500)
+    }
 }
 
 async function changeTaskStatus(status, id) {
@@ -114,12 +116,12 @@ async function changeTaskStatus(status, id) {
             "Content-Type": "application/json"
         },
         "body": JSON.stringify({
-            "status": `${status == "Concluído" ? "Inconcluido" : "Concluído"}`,
+            "status": `${status == "Concluído" ? "Inconcluído" : "Concluído"}`,
             "id": `${id}`,
         })
     })
     refresh()
-    displayMessage("concluída")
+    status == "Inconcluído" ? displayMessage("concluída") : undefined
 }
 
 function editTask(title, id) {

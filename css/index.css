@@ -70,6 +70,10 @@ html, body {
     font-size: 20px;
 }
 
+.textTask.concluded {
+    color: #147100;
+}
+
 .buttonActions {
     height: 22px;
     border: none;
