@@ -1,6 +1,4 @@
 # todolist
-Crud Todolist consumindo uma API REST
-
-Back-end feito pelo dev @Emanoelv
+Crud To-do-list consumindo uma API REST
 
 Link da API utilizada: https://github.com/EmanoelV/simple_api_dart
