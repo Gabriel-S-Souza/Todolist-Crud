@@ -94,17 +94,19 @@ async function deleteTask(id){
     let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
     if(confirmDelete){
         displayMessage("excluída")
-        let answer = await fetch("http://localhost:7777/v1/todolist", {
-        "method": "DELETE",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
-            "id": `${id}`,
-        })
-    })
-    refresh()
-    } 
+        setTimeout(function(){
+            let answer = await fetch("http://localhost:7777/v1/todolist", {
+            "method": "DELETE",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "id": `${id}`,
+                })
+            })
+            refresh()
+        }, 500)
+    }
 }
 
 async function changeTaskStatus(status, id) {
