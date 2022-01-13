@@ -125,10 +125,7 @@ function editTask(title, id) {
     value="${title}" autofocus>`
     let taskEdited = document.querySelector('input.textTask')
     taskEdited.addEventListener("blur", editTaskReq)
-    window.addEventListener("keydown", function(event){
-        event.preventDefault
-        event.keyCode == 13 ? editTaskReq(): undefined 
-    })
+    window.addEventListener("keydown", (event) => event.keyCode == 13 ? editTaskReq(): undefined)
     async function editTaskReq(){
         taskEdited.removeEventListener("blur", editTaskReq)
         taskEdited.removeEventListener("keydown", editTaskReq)
