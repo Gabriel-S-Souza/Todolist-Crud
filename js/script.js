@@ -1,7 +1,7 @@
-
 const buttonOpen = document.querySelector('#btn-open')
 const backgroundModal = document.querySelector('.modal')
 const buttonInsert = document.querySelector('#btn-insert')
+const modal = document.querySelector('#wrapper-modal')
 
 async function getTasks() {
     let answer = await fetch("http://localhost:7777/v1/todolist")
@@ -47,16 +47,18 @@ function createList(data) {
                 </ul>
             </div>
         </li>`
-    });
+    })
 }
 
 buttonOpen.addEventListener('click', function(e){
     e.preventDefault
     document.querySelector('.modal').classList.add('ativo')
+    modal.classList.add('ativo')
 })
 
 backgroundModal.addEventListener('click', function(e){
     e.target.classList.remove('ativo')
+    modal.classList.add('ativo')
 })
 
 buttonInsert.addEventListener('click', function(){
@@ -80,6 +82,7 @@ async function createTask(task) {
     })
     let answerJson = await answer.json()
     refresh()
+    displayMessage("criada")
 }
 
 function refresh() {
@@ -90,6 +93,7 @@ function refresh() {
 async function deleteTask(id){
     let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
     if(confirmDelete){
+        displayMessage("excluída")
         let answer = await fetch("http://localhost:7777/v1/todolist", {
         "method": "DELETE",
         "headers": {
@@ -115,6 +119,7 @@ async function changeTaskStatus(status, id) {
         })
     })
     refresh()
+    displayMessage("concluída")
 }
 
 function editTask(title, id) {
@@ -140,5 +145,19 @@ function editTask(title, id) {
             })
         })
         refresh()
+        displayMessage("editada")
     } 
+}
+
+function displayMessage(msg){
+    const boxDisplay = document.querySelector('.display-message')
+    const message = document.querySelector('#message')
+    const cancel = document.querySelector('#cancel')
+    message.textContent = "Tarefa " + msg
+    boxDisplay.classList.add('ativo')
+    if(msg == "excluída") message.classList.add('deleted')
+    setTimeout(function(){
+        boxDisplay.classList.remove('ativo')
+        message.classList.remove('deleted')
+    }, 3000)
 }

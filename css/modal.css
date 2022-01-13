@@ -33,6 +33,22 @@
     box-shadow: 0 0 13px 6px rgba(0, 0, 0, 16%);
 }
 
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100px, -30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        
+    }
+}
+
+#wrapper-modal.ativo {
+    animation: modal .22s forwards;
+}
+
 #wrapper-modal #inputTask {
     width: 90%;
     height: 48px;
@@ -51,4 +67,3 @@
     font-weight: 500;
     box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 25%);
 }
-

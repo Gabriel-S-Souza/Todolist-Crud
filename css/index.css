@@ -153,22 +153,36 @@ html, body {
     padding: 0 18px;
     background: #FFF;
     border: 1px #000 solid;
-    box-shadow: 0 10px 12px rgba(0, 0, 0, 25%);
+    box-shadow: 0 4px 14px 8px rgba(0, 0, 0, 20%);
     bottom: 180px;
+}
+
+@keyframes message {
+    from {
+        opacity: .2;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .display-message.ativo {
     display: flex;
+    animation: message .7s forwards;
 }
 
 #message, #cancel {
     font-size: 18px;
     margin-bottom: 0;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 #message {
     color: #147100;
+}
+
+#message.deleted {
+    color: #C80000;
 }
 
 #cancel {
