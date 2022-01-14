@@ -171,5 +171,5 @@ function displayMessage(msg){
     setTimeout(function(){
         boxDisplay.classList.remove('ativo')
         message.classList.remove('deleted')
-    }, 3000)
+    }, 2800)
 }
