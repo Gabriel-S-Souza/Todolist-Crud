@@ -1,12 +1,29 @@
+class ClientFetch {
+    post(){}
+    async get(path, header = {}){
+        let response = await fetch(path, {
+            "headers": header
+            }
+        )
+        return await response.json()
+    }
+
+    put(){}
+    delete(){}
+}
+
+var client = new ClientFetch()
 const buttonOpen = document.querySelector('#btn-open')
 const backgroundModal = document.querySelector('.modal')
 const buttonInsert = document.querySelector('#btn-insert')
 const modal = document.querySelector('#wrapper-modal')
 
+
+
 async function getTasks() {
-    let answer = await fetch("http://localhost:7777/v1/todolist")
-    let answerJson = await answer.json()
-    createList(answerJson)
+    let answer = await client.get("http://localhost:7777/v1/todolist")
+    // let answerJson = await answer.json()
+    createList(answer)
 }
 
 getTasks()
