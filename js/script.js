@@ -14,40 +14,48 @@ getTasks()
 function createList(data) {
     const lista = document.querySelector('#to-do-list')
     lista.innerHTML = ""
-    data.forEach(task => {
-        const li = document.createElement('li')
-        lista.appendChild(li)
-        li.outerHTML = 
-        `<li class="task">
-            <p class="textTask ${task.status == "Concluído" ? "concluded" : ""}" id=${task.id}>${task.title + (task.status == "Concluído" ? " - Concluído" : "")}</p>
-            <div class="btn-group dropstart">
-                <button type="button" class="buttonActions" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="material-icons">
-                        more_vert
-                    </span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-item" onclick="editTask('${task.title}', '${task.id}')">
-                        Editar
+    if(data.length < 1) {
+        const voidListMsg = document.createElement('span')
+        voidListMsg.classList.add('void-list-msg')
+        voidListMsg.textContent = "A lista está vazia, click no + para adicionar uma tarefa!"
+        lista.appendChild(voidListMsg)
+    }
+    else {
+        data.forEach(task => {
+            const li = document.createElement('li')
+            lista.appendChild(li)
+            li.outerHTML = 
+            `<li class="task">
+                <p class="textTask ${task.status == "Concluído" ? "concluded" : ""}" id=${task.id}>${task.title + (task.status == "Concluído" ? " - Concluído" : "")}</p>
+                <div class="btn-group dropstart">
+                    <button type="button" class="buttonActions" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="material-icons">
-                            edit
+                            more_vert
                         </span>
-                    <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
-                    ${task.status == "Concluído" ? "Inconcluído" : "Concluído"}
-                        <span class="material-icons" style="font-weight: bold;">
-                        ${task.status == "Concluído" ? "close" : "check"}
-                        </span>
-                    </li>
-                    </li>
-                    <li class="dropdown-item" onclick="deleteTask('${task.id}')" >Deletar
-                        <span class="material-icons">
-                            delete
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </li>`
-    })
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" onclick="editTask('${task.title}', '${task.id}')">
+                            Editar
+                            <span class="material-icons">
+                                edit
+                            </span>
+                        <li class="dropdown-item" onclick="changeTaskStatus('${task.status}','${task.id}')">
+                        ${task.status == "Concluído" ? "Inconcluído" : "Concluído"}
+                            <span class="material-icons" style="font-weight: bold;">
+                            ${task.status == "Concluído" ? "close" : "check"}
+                            </span>
+                        </li>
+                        </li>
+                        <li class="dropdown-item" onclick="deleteTask('${task.id}')" >Deletar
+                            <span class="material-icons">
+                                delete
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </li>`
+        })
+    }
 }
 
 buttonOpen.addEventListener('click', function(e){
