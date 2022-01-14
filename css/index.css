@@ -2,7 +2,6 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    font-family: Roboto, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #header {
@@ -26,7 +25,7 @@ html, body {
     align-items: center;
     width: 45%;
     height: 70%;
-    max-width: 820px;
+    /* max-width: 820px; */
     min-width: 600px;
     min-height: 600px;
     margin: auto;
@@ -56,7 +55,6 @@ html, body {
     height: 68px;
     background-color: #FFF;
     border: 1px solid #DFD9D9;
-    z-index: 0;
 }
 
 .task:hover {
@@ -64,7 +62,7 @@ html, body {
     z-index: 2;
 }
 
-#to-do-list .task .textTask {
+.textTask {
     display: flex;
     align-items: center;
     height: 100%;
@@ -98,7 +96,7 @@ html, body {
 }
 
 .task.deleted {
-    animation: taskDeleted  .6s forwards cubic-bezier(.58, -0.75,.83,.67);
+    animation: taskDeleted  .4s forwards cubic-bezier(.58, 0,.83,.67);
 }
 
 .buttonActions {
@@ -143,7 +141,7 @@ html, body {
     width: 90px;
     bottom: 0.45em;
     font-size: 66px;
-    background-color: #1A12B8;
+    background-color: #0d6efd;
     color: #FFF;
     border-radius: 50%;
     border: none;
@@ -158,8 +156,7 @@ html, body {
     width: 150px;
     height: 162px;
     border-radius: 8px;
-    box-shadow: 0;
-    z-index: 50;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.20);
 }
 
 .dropdown-item {
@@ -219,4 +216,60 @@ html, body {
 
 #cancel {
     color: rgba(0, 0, 0, 70%);
+}
+
+.void-list-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.5); 
+}
+
+@media screen and (min-width: 700px) {
+    #container {
+        width: 100%;
+        height: 100%;
+    }
+    #title {
+        font-size: 64px;
+    }
+    .textTask {
+        font-size: 40px;
+    }
+    .task {
+        height: 112px;
+    }
+
+    .inputEdit {
+        height: 100%;
+        margin-bottom: 32px;
+    }
+
+    #header, #footer {
+        height: 150px;
+    }
+
+    #btn-open {
+        height: 140px;
+        width: 140px;
+        bottom: .45em;
+        font-size: 112px;
+    }
+
+    .dropdown-menu.show {
+        width: 300px;
+        height: 350px;
+    }
+
+    .dropdown-item {
+        height: 33.334%;
+        width: 98%;
+        font-size: 32px;
+    }
+
+    .material-icons {
+        font-size: 32px;
+    }
 }
