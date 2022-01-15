@@ -94,13 +94,13 @@ function refresh() {
 function deleteTask(id) {
     let confirmDelete = confirm("Esta ação removerá permanentemente a tarefa, deseja continuar?")
     if (confirmDelete) {
+        displayMessage("excluída")
         document.getElementById(`${id}`).parentElement.classList.add('deleted')
         setTimeout(async function() {
             await client.delete("http://localhost:7777/v1/todolist", {
                 "id": `${id}`,
             })
             refresh()
-            displayMessage("excluída")
         }, 1000)
     }
 }
