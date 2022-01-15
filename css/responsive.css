@@ -1,7 +1,12 @@
 @media (pointer: coarse) {
+    html, body {
+        display: flex;
+        height: 94vh;
+    }
     #container {
         width: 100%;
-        height: 100%;
+        height: 100vh;
+        margin: 0;
     }
     #title {
         font-size: 64px;
@@ -10,29 +15,18 @@
         font-size: 40px;
     }
     .task {
-        height: 112px;
+        padding: 36px;
+        height: 150px;
     }
     
     @keyframes taskDeleted {
-        0% {
-            opacity: 1;
-            height: 68px;
-            transform: translateX(0);
+        from {
+            height: 150px;
+            transform: translate3d(0, 0, 0);
         }
-        25% {
-            opacity: 0.50;
-            height: 51px;
-            transform: translateX(50%);
-        }
-        75% {
-            opacity: 0.25;
-            height: 34px;
-            transform: translateX(100%);
-        }
-        100% {
-            opacity: 0;
+        to {
             height: 0px;
-            transform: translateX(110%);
+            transform: translate3d(150%, -100%, 0);
         }
     }
     
@@ -46,24 +40,44 @@
     }
     
     #header, #footer {
-        height: 150px;
+        height: 190px;
     }
     
     #btn-open {
-        height: 140px;
-        width: 140px;
-        bottom: .45em;
+        display: flex;
+        align-items: center;
+        height: 160px;
+        width: 160px;
+        bottom: .68em;
         font-size: 112px;
     }
-    
+
     #wrapper-modal {
-        width: 100%;
-        height: 360px;
+        width: 90%;
+        height: 380px;
+        max-width: 90%;
         padding-bottom: 10px;
-        margin-bottom: 0.5em;
-        border-radius: 8px;
-        box-shadow: 0 0 13px 6px rgba(0, 0, 0, 16%);
+        margin-bottom: 18em;
+        transform: scaleX(1.5);
     }
+
+
+
+    #inputTask {
+        border: 2px solid #000;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        font-size: 40px;
+        transform: scaleX(1.25);
+        transform: scaleY(1.25);
+    }
+
+    #btn-insert {
+        width: 240px;
+        height: 80px;
+        font-size: 32px;
+    }
+    
     
     .dropdown-menu.show {
         width: 300px;
@@ -77,17 +91,19 @@
     }
     
     .material-icons {
-        font-size: 32px;
+        font-size: 48px;
     }
-    
+
+    .buttonActions{
+        height: fit-content;
+    }
+
     .display-message {
         display: none;
-        height: 112px;
-        width: 100%;
-        background: #FFF;
-        border: 1px #000 solid;
+        height: 148px;
+        width: 98%;
         box-shadow: 0 4px 14px 8px rgba(0, 0, 0, 20%);
-        bottom: 340px;
+        bottom: 520px;
     }
     
     #message, #cancel {
@@ -99,6 +115,6 @@
         font-size: 40px;
         padding: 116px;
         text-align: center;
-        color: red;
+        color: rgba(0, 0, 0, 0.5); 
     }
 }

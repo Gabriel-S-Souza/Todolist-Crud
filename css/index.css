@@ -197,7 +197,7 @@ html, body {
 
 .display-message.ativo {
     display: flex;
-    animation: message .7s forwards;
+    animation: message .6s forwards;
 }
 
 #message, #cancel {
