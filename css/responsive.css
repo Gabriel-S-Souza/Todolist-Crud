@@ -1,7 +1,8 @@
 @media (pointer: coarse) {
-    html, body {
+    html,
+    body {
         display: flex;
-        height: 94vh;
+        height: 100vh;
     }
     #container {
         width: 100%;
@@ -14,35 +15,29 @@
     .textTask {
         font-size: 40px;
     }
-    .task {
+    /* .task {
         padding: 36px;
         height: 150px;
-    }
-    
-    @keyframes taskDeleted {
-        from {
+    } */
+    /* @keyframes taskDeleted {
+        75% {
             height: 150px;
             transform: translate3d(0, 0, 0);
         }
-        to {
+        100% {
             height: 0px;
-            transform: translate3d(150%, -100%, 0);
+            transform: translateX(150%);
         }
     }
-    
-    .task.deleted {
-        animation: taskDeleted  .5s forwards;
-    }
-    
+     */
     .inputEdit {
         height: 100%;
         margin-bottom: 32px;
     }
-    
-    #header, #footer {
+    #header,
+    #footer {
         height: 190px;
     }
-    
     #btn-open {
         display: flex;
         align-items: center;
@@ -51,7 +46,6 @@
         bottom: .68em;
         font-size: 112px;
     }
-
     #wrapper-modal {
         width: 90%;
         height: 380px;
@@ -60,9 +54,6 @@
         margin-bottom: 18em;
         transform: scaleX(1.5);
     }
-
-
-
     #inputTask {
         border: 2px solid #000;
         padding-top: 32px;
@@ -71,33 +62,26 @@
         transform: scaleX(1.25);
         transform: scaleY(1.25);
     }
-
     #btn-insert {
         width: 240px;
         height: 80px;
         font-size: 32px;
     }
-    
-    
     .dropdown-menu.show {
         width: 300px;
         height: 350px;
     }
-    
     .dropdown-item {
         height: 33.334%;
         width: 98%;
         font-size: 32px;
     }
-    
     .material-icons {
         font-size: 48px;
     }
-
-    .buttonActions{
+    .buttonActions {
         height: fit-content;
     }
-
     .display-message {
         display: none;
         height: 148px;
@@ -105,16 +89,15 @@
         box-shadow: 0 4px 14px 8px rgba(0, 0, 0, 20%);
         bottom: 520px;
     }
-    
-    #message, #cancel {
+    #message,
+    #cancel {
         font-size: 40px;
         font-weight: 400;
     }
-    
     .void-list-msg {
         font-size: 40px;
         padding: 116px;
         text-align: center;
-        color: rgba(0, 0, 0, 0.5); 
+        color: rgba(0, 0, 0, 0.5);
     }
 }
