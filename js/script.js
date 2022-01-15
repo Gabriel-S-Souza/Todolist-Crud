@@ -1,24 +1,8 @@
-class ClientFetch {
-    post(){}
-    async get(path, header = {}){
-        let response = await fetch(path, {
-            "headers": header
-            }
-        )
-        return await response.json()
-    }
-
-    put(){}
-    delete(){}
-}
-
-var client = new ClientFetch()
+let client = new ClientLocalStorage()
 const buttonOpen = document.querySelector('#btn-open')
 const backgroundModal = document.querySelector('.modal')
 const buttonInsert = document.querySelector('#btn-insert')
 const modal = document.querySelector('#wrapper-modal')
-
-
 
 async function getTasks() {
     let answer = await client.get("http://localhost:7777/v1/todolist")
@@ -96,17 +80,11 @@ buttonInsert.addEventListener('click', function(){
 })
 
 async function createTask(task) {
-    let answer = await fetch("http://localhost:7777/v1/todolist", {
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
+    await client.post("http://localhost:7777/v1/todolist", {
             "title": `${task}`,
             "status": "Inconcluído"
-        })
-    })
-    let answerJson = await answer.json()
+        }
+    )
     refresh()
     displayMessage("criada")
 }
@@ -119,34 +97,22 @@ function refresh() {
 function deleteTask(id){
     let confirmDelete = confirm("Tem certeza que deseja deleter essa tarefa?")
     if(confirmDelete){
-        displayMessage("excluída")
         document.getElementById(`${id}`).parentElement.classList.add('deleted')
         setTimeout(async function(){
-            let answer = await fetch("http://localhost:7777/v1/todolist", {
-            "method": "DELETE",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
+            await client.delete("http://localhost:7777/v1/todolist", {
                 "id": `${id}`,
                 })
-            })
             refresh()
+            displayMessage("excluída")
         }, 1000)
     }
 }
 
 async function changeTaskStatus(status, id) {
-    let answer = await fetch("http://localhost:7777/v1/todolist", {
-        "method": "PUT",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
+    await client.put("http://localhost:7777/v1/todolist", {
             "status": `${status == "Concluído" ? "Inconcluído" : "Concluído"}`,
             "id": `${id}`,
         })
-    })
     refresh()
     status == "Inconcluído" ? displayMessage("concluída") : undefined
 }
@@ -163,16 +129,11 @@ function editTask(title, id) {
     async function editTaskReq(){
         taskEdited.removeEventListener("blur", editTaskReq)
         taskEdited.removeEventListener("keydown", editTaskReq)
-        let answer = await fetch("http://localhost:7777/v1/todolist", {
-            "method": "PUT",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
+        await client.put("http://localhost:7777/v1/todolist", {
                 "title": `${taskEdited.value}`,
                 "id": `${id}`,
-            })
-        })
+            }
+        )
         refresh()
         displayMessage("editada")
     } 
