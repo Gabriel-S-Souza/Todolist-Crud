@@ -47,7 +47,7 @@
     animation: modal .22s forwards;
 }
 
-#wrapper-modal #inputTask {
+#inputTask {
     width: 90%;
     height: 48px;
     font-size: 20px;
