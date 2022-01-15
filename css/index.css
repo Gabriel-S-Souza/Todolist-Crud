@@ -79,9 +79,11 @@ body {
 @keyframes taskDeleted {
     75% {
         height: 10%;
+        min-height: 10em;
     }
     100% {
         height: 0px;
+        min-height: 0em;
         transform: translateX(150%);
     }
 }
