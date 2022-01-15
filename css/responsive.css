@@ -1,86 +1,104 @@
-#container {
-    width: 100%;
-    height: 100%;
-}
-#title {
-    font-size: 64px;
-}
-.textTask {
-    font-size: 40px;
-}
-.task {
-    height: 112px;
-}
-
-@keyframes taskDeleted {
-    0% {
-        opacity: 1;
-        height: 68px;
-        transform: translateX(0);
+@media (pointer: coarse) {
+    #container {
+        width: 100%;
+        height: 100%;
     }
-    25% {
-        opacity: 0.50;
-        height: 51px;
-        transform: translateX(50%);
+    #title {
+        font-size: 64px;
     }
-    75% {
-        opacity: 0.25;
-        height: 34px;
-        transform: translateX(100%);
+    .textTask {
+        font-size: 40px;
     }
-    100% {
-        opacity: 0;
-        height: 0px;
-        transform: translateX(110%);
+    .task {
+        height: 112px;
     }
-}
-
-.task.deleted {
-    animation: taskDeleted  .5s forwards;
-}
-
-.inputEdit {
-    height: 100%;
-    margin-bottom: 32px;
-}
-
-#header, #footer {
-    height: 150px;
-}
-
-#btn-open {
-    height: 140px;
-    width: 140px;
-    bottom: .45em;
-    font-size: 112px;
-}
-
-.dropdown-menu.show {
-    width: 300px;
-    height: 350px;
-}
-
-.dropdown-item {
-    height: 33.334%;
-    width: 98%;
-    font-size: 32px;
-}
-
-.material-icons {
-    font-size: 32px;
-}
-
-.display-message {
-    display: none;
-    height: 112px;
-    width: 100%;
-    background: #FFF;
-    border: 1px #000 solid;
-    box-shadow: 0 4px 14px 8px rgba(0, 0, 0, 20%);
-    bottom: 340px;
-}
-
-#message, #cancel {
-    font-size: 40px;
-    font-weight: 400;
+    
+    @keyframes taskDeleted {
+        0% {
+            opacity: 1;
+            height: 68px;
+            transform: translateX(0);
+        }
+        25% {
+            opacity: 0.50;
+            height: 51px;
+            transform: translateX(50%);
+        }
+        75% {
+            opacity: 0.25;
+            height: 34px;
+            transform: translateX(100%);
+        }
+        100% {
+            opacity: 0;
+            height: 0px;
+            transform: translateX(110%);
+        }
+    }
+    
+    .task.deleted {
+        animation: taskDeleted  .5s forwards;
+    }
+    
+    .inputEdit {
+        height: 100%;
+        margin-bottom: 32px;
+    }
+    
+    #header, #footer {
+        height: 150px;
+    }
+    
+    #btn-open {
+        height: 140px;
+        width: 140px;
+        bottom: .45em;
+        font-size: 112px;
+    }
+    
+    #wrapper-modal {
+        width: 100%;
+        height: 360px;
+        padding-bottom: 10px;
+        margin-bottom: 0.5em;
+        border-radius: 8px;
+        box-shadow: 0 0 13px 6px rgba(0, 0, 0, 16%);
+    }
+    
+    .dropdown-menu.show {
+        width: 300px;
+        height: 350px;
+    }
+    
+    .dropdown-item {
+        height: 33.334%;
+        width: 98%;
+        font-size: 32px;
+    }
+    
+    .material-icons {
+        font-size: 32px;
+    }
+    
+    .display-message {
+        display: none;
+        height: 112px;
+        width: 100%;
+        background: #FFF;
+        border: 1px #000 solid;
+        box-shadow: 0 4px 14px 8px rgba(0, 0, 0, 20%);
+        bottom: 340px;
+    }
+    
+    #message, #cancel {
+        font-size: 40px;
+        font-weight: 400;
+    }
+    
+    .void-list-msg {
+        font-size: 40px;
+        padding: 116px;
+        text-align: center;
+        color: red;
+    }
 }

@@ -10,5 +10,5 @@ function isMobile(){
     }
 }
 
-window.onload = isMobile()
-window.addEventListener('resize', isMobile)
+// window.onload = isMobile()
+// window.addEventListener('resize', isMobile)
