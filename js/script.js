@@ -6,7 +6,6 @@ const modal = document.querySelector('#wrapper-modal')
 
 async function getTasks() {
     let answer = await client.get("http://localhost:7777/v1/todolist")
-    // let answerJson = await answer.json()
     createList(answer)
 }
 
